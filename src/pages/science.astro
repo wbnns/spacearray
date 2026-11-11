@@ -1,27 +1,7 @@
-<!doctype html>
-<html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Science · Space Array</title><link rel="stylesheet" href="styles.css"></head>
-<body>
-
-<!-- <header><div class="nav"><a class="logo" href="index.html">Space Array</a><nav><a href="index.html">Home</a><a class="active" href="science.html">Science</a><a href="sharp.html">SHARP</a><a href="technology.html">Technology</a><a href="team.html">Team</a><a href="contact.html">Contact</a></nav></div></header> -->
-
-<header>
-  <div class="nav">
-    <a class="logo" href="index.html">Space Array</a>
-
-    <nav>
-      <a href="index.html">Home</a>
-      <a class="active" href="science.html">Science</a>
-      <a href="sharp.html">SHARP</a>
-      <a href="technology.html">Technology</a>
-      <a href="team.html">Team</a>
-      <a href="news.html">News</a>
-      <a href="https://zenodo.org/communities/spacearray/" target="_blank">Documents</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-</header>
-
+---
+import Layout from "../layouts/Layout.astro";
+---
+<Layout title="Science · Space Array" active="science.html">
 
 <main>
   <section class="hero"><div class="kicker">Science case</div><h1>Science enabled by extreme angular resolution beyond Earth.</h1><p class="lead">A future space array could extend high-resolution astronomy beyond the constraints of Earth-sized baselines and atmospheric transparency.</p></section>
@@ -33,5 +13,6 @@
     <article class="card"><h3>Astrometry and reference frames</h3><p>Exploring precision astrometric applications enabled by long baselines and stable calibration.</p></article>
     <article class="card"><h3>Discovery space</h3><p>Opening a regime of angular resolution where unexpected compact phenomena may become observable.</p></article>
   </section>
-</main><footer>© Space Array Initiative</footer>
-</body></html>
+</main>
+
+</Layout>

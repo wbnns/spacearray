@@ -1,0 +1,40 @@
+---
+// The shared page frame: head, menu and footer.
+// Each page sets its own title, its menu item and (if needed) its footer text.
+const { title, active, footer = "© Space Array Initiative" } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{title}</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="index.html">Space Array</a>
+
+    <nav>
+      <a class={active === "index.html" ? "active" : undefined} href="index.html">Home</a>
+      <a class={active === "science.html" ? "active" : undefined} href="science.html">Science</a>
+      <a class={active === "sharp.html" ? "active" : undefined} href="sharp.html">SHARP</a>
+      <a class={active === "technology.html" ? "active" : undefined} href="technology.html">Technology</a>
+      <a class={active === "team.html" ? "active" : undefined} href="team.html">Team</a>
+      <a class={active === "news.html" ? "active" : undefined} href="news.html">News</a>
+      <a href="https://zenodo.org/communities/spacearray/" target="_blank">Documents</a>
+      <a class={active === "contact.html" ? "active" : undefined} href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<slot />
+
+<footer>
+  {footer}
+</footer>
+<slot name="after-footer" />
+</body>
+</html>

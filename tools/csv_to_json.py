@@ -5,7 +5,7 @@ from pathlib import Path
 base_dir = Path(__file__).resolve().parent.parent
 
 input_file = base_dir / "data" / "Sign up form to be listed on Space Array website(Sheet1).csv"
-output_file = base_dir / "team.json"
+output_file = base_dir / "public" / "team.json"
 
 data = []
 

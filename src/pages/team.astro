@@ -1,30 +1,7 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Team · Space Array</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-
-<body>
-
-<header>
-  <div class="nav">
-    <a class="logo" href="index.html">Space Array</a>
-
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="science.html">Science</a>
-      <a href="sharp.html">SHARP</a>
-      <a href="technology.html">Technology</a>
-      <a class="active" href="team.html">Team</a>
-      <a href="news.html">News</a>
-      <a href="https://zenodo.org/communities/spacearray/" target="_blank">Documents</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-</header>
+---
+import Layout from "../layouts/Layout.astro";
+---
+<Layout title="Team · Space Array" active="team.html">
 
 <main>
 
@@ -80,12 +57,7 @@
 
 </main>
 
-<footer>
-  © Space Array Initiative
-</footer>
-
-
-<script>
+<script is:inline slot="after-footer">
 fetch("team.json")
   .then(response => {
     if (!response.ok) {
@@ -131,5 +103,4 @@ fetch("team.json")
   });
 </script>
 
-</body>
-</html>
+</Layout>
