@@ -66,3 +66,10 @@ A pull request (PR) is a proposed change. Nothing goes live until someone merges
 5. When you are happy, click **Merge pull request**, then **Confirm merge**.
 
 To undo a merged PR, open it and click **Revert**. GitHub creates a new PR that undoes the change.
+
+## License
+
+- **Code** (HTML structure, CSS, scripts): MIT License. See [LICENSE](LICENSE).
+- **Content** (text and images): Creative Commons Attribution 4.0 International (CC BY 4.0). See [LICENSE-CONTENT](LICENSE-CONTENT).
+
+Images from other sources keep their own license. Their credit lines say where they come from.
