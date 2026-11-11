@@ -2,24 +2,32 @@
 
 The public website of the Space Array Initiative: https://spacearray.org
 
-The site is plain HTML and CSS. GitHub Pages publishes the `main` branch. Every merge to `main` goes live within a few minutes.
+The site is built with [Astro](https://astro.build). GitHub builds the site and publishes it after every merge to `main`, so nobody needs to run anything on their own computer. A merge goes live within a few minutes.
 
 ## Files
 
+Each page is one file in `src/pages/`. The menu, the page head and the footer are in one shared file, `src/layouts/Layout.astro`. Change the menu there, and it changes on every page.
+
 | File | Page |
 | --- | --- |
-| `index.html` | Home |
-| `science.html` | Science |
-| `sharp.html` | SHARP |
-| `technology.html` | Technology |
-| `team.html` | Team (the list comes from `team.json`) |
-| `news.html` | News |
-| `contact.html` | Contact |
-| `styles.css` | Colors, fonts and layout for all pages |
+| `src/pages/index.astro` | Home |
+| `src/pages/science.astro` | Science |
+| `src/pages/sharp.astro` | SHARP |
+| `src/pages/technology.astro` | Technology |
+| `src/pages/team.astro` | Team (the list comes from `public/team.json`) |
+| `src/pages/news.astro` | News |
+| `src/pages/contact.astro` | Contact |
+| `src/layouts/Layout.astro` | Head, menu and footer for all pages |
+| `public/styles.css` | Colors, fonts and layout for all pages |
+| `public/images/` | Images |
+
+Files in `public/` go online as they are. For example, `public/images/photo.jpg` is at `https://spacearray.org/images/photo.jpg`.
+
+The page addresses did not change. `src/pages/news.astro` is still at `https://spacearray.org/news.html`.
 
 ## How to add a news item
 
-1. Open `news.html` on GitHub and click the pencil icon.
+1. Open `src/pages/news.astro` on GitHub and click the pencil icon.
 2. Copy one `<article>` block and paste it above the newest item.
 3. Change the date, the title and the text.
 4. Click **Commit changes**, choose **Create a new branch**, then **Propose changes**.
@@ -38,14 +46,14 @@ The site is plain HTML and CSS. GitHub Pages publishes the `main` branch. Every 
 
 ## How to update the team page
 
-The Team page reads `team.json`. The script `tools/csv_to_json.py` builds that file from the sign-up form responses.
+The Team page reads `public/team.json`. The script `tools/csv_to_json.py` builds that file from the sign-up form responses.
 
 1. Export the form responses as a CSV file.
 2. Save it in the `data/` folder, with the same file name as the CSV that is there now.
-3. Run `python3 tools/csv_to_json.py`. It rewrites `team.json`, sorted by last name.
-4. Commit the new `team.json`.
+3. Run `python3 tools/csv_to_json.py`. It rewrites `public/team.json`, sorted by last name.
+4. Commit the new `public/team.json`.
 
-Do not edit `team.json` by hand. The script overwrites it the next time it runs.
+Do not edit `public/team.json` by hand. The script overwrites it the next time it runs.
 
 ## How to review and merge a pull request
 
