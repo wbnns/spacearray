@@ -44,6 +44,16 @@ The page addresses did not change. `src/pages/news.astro` is still at `https://s
 </article>
 ```
 
+### Give a news item its own page
+
+A news item with its own page shows a proper preview (title, summary and photo) when someone shares its link on LinkedIn, X, Slack or email. See `src/pages/news/simulation-working-group-sweden.astro` for an example.
+
+1. Put the photo in `public/images/`. Also add a copy cropped to 1200 x 630 pixels for the preview.
+2. Copy the example page in `src/pages/news/` and give the copy a short name, for example `my-news-item.astro`.
+3. Change the title, the summary (`description`, under 160 characters), `path`, `image`, `imageAlt` and the text.
+4. On the News page, link the item's title to `news/my-news-item.html`.
+5. After the merge, share `https://spacearray.org/news/my-news-item.html`, not the News page.
+
 ## How to update the team page
 
 The Team page reads `public/team.json`. The script `tools/csv_to_json.py` builds that file from the sign-up form responses.

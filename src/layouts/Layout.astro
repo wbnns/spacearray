@@ -1,7 +1,30 @@
 ---
 // The shared page frame: head, menu and footer.
 // Each page sets its own title, its menu item and (if needed) its footer text.
-const { title, active, footer = "© Space Array Initiative" } = Astro.props;
+//
+// Pages in a subfolder (like news/) set base="../" so links still work.
+//
+// A page that people will share (like a news item) also sets:
+//   path        its address, for example "news/my-item.html"
+//   description one or two sentences, under 160 characters
+//   shareTitle  the title for link previews (without " · Space Array")
+//   image       the share image in public/images/, 1200 x 630 pixels
+//   imageAlt    what the share image shows
+// Then LinkedIn, X, Slack and email show a preview with that title, text and image.
+const {
+  title,
+  active,
+  footer = "© Space Array Initiative",
+  base = "",
+  path,
+  description,
+  shareTitle = title,
+  image,
+  imageAlt,
+} = Astro.props;
+
+const pageUrl = path ? new URL(path, Astro.site).href : undefined;
+const imageUrl = image ? new URL(`images/${image}`, Astro.site).href : undefined;
 ---
 <!doctype html>
 <html lang="en">
@@ -9,23 +32,43 @@ const { title, active, footer = "© Space Array Initiative" } = Astro.props;
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{title}</title>
-  <link rel="stylesheet" href="styles.css">
+  {description && <meta name="description" content={description}>}
+  {pageUrl && <link rel="canonical" href={pageUrl}>}
+  {pageUrl && imageUrl && (
+    <>
+      <meta property="og:type" content="article">
+      <meta property="og:site_name" content="Space Array">
+      <meta property="og:title" content={shareTitle}>
+      <meta property="og:description" content={description}>
+      <meta property="og:url" content={pageUrl}>
+      <meta property="og:image" content={imageUrl}>
+      <meta property="og:image:width" content="1200">
+      <meta property="og:image:height" content="630">
+      <meta property="og:image:alt" content={imageAlt}>
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:title" content={shareTitle}>
+      <meta name="twitter:description" content={description}>
+      <meta name="twitter:image" content={imageUrl}>
+      <meta name="twitter:image:alt" content={imageAlt}>
+    </>
+  )}
+  <link rel="stylesheet" href={`${base}styles.css`}>
 </head>
 <body>
 
 <header>
   <div class="nav">
-    <a class="logo" href="index.html">Space Array</a>
+    <a class="logo" href={`${base}index.html`}>Space Array</a>
 
     <nav>
-      <a class={active === "index.html" ? "active" : undefined} href="index.html">Home</a>
-      <a class={active === "science.html" ? "active" : undefined} href="science.html">Science</a>
-      <a class={active === "sharp.html" ? "active" : undefined} href="sharp.html">SHARP</a>
-      <a class={active === "technology.html" ? "active" : undefined} href="technology.html">Technology</a>
-      <a class={active === "team.html" ? "active" : undefined} href="team.html">Team</a>
-      <a class={active === "news.html" ? "active" : undefined} href="news.html">News</a>
+      <a class={active === "index.html" ? "active" : undefined} href={`${base}index.html`}>Home</a>
+      <a class={active === "science.html" ? "active" : undefined} href={`${base}science.html`}>Science</a>
+      <a class={active === "sharp.html" ? "active" : undefined} href={`${base}sharp.html`}>SHARP</a>
+      <a class={active === "technology.html" ? "active" : undefined} href={`${base}technology.html`}>Technology</a>
+      <a class={active === "team.html" ? "active" : undefined} href={`${base}team.html`}>Team</a>
+      <a class={active === "news.html" ? "active" : undefined} href={`${base}news.html`}>News</a>
       <a href="https://zenodo.org/communities/spacearray/" target="_blank">Documents</a>
-      <a class={active === "contact.html" ? "active" : undefined} href="contact.html">Contact</a>
+      <a class={active === "contact.html" ? "active" : undefined} href={`${base}contact.html`}>Contact</a>
     </nav>
   </div>
 </header>
